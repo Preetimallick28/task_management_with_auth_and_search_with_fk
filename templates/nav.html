@@ -3,13 +3,15 @@
         <h2>TODO</h2>
     </div>
     <div class="links">
-        <a href="">LOGIN</a>
-        <a href="">REGISTER</a>
+        <a href="{% url 'login' %}">LOGIN</a>
+        <a href="{% url 'register' %}">REGISTER</a>
+        <a href="{% url 'home' %}">HOME</a>
         <a href="">ADD</a>
         <a href="">HISTORY</a>
         <a href="">COMPLETED</a>
         <a href="">PROFILE</a>        
         <a href="">LOGOUT</a>
+        <a href="{% url 'about' %}">ABOUT</a>
         
     </div>
 </nav>
