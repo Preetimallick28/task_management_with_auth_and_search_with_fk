@@ -14,14 +14,18 @@ def register_(request):
         user_name = request.POST['username']
         password = request.POST['password']
         print(first_name,last_name,email,user_name,password)
-        u=User.objects.create(
-            first_name=first_name,
-            last_name = last_name,
-            email = email,
-            username = user_name
-        )
-        u.set_password(password)
-        u.save()
-        return redirect('login')
+        try:
+            username_exist = User.objects.get(username=user_name)
+            return render(request,'register.html',{'username_existed':True})
+        except:
+            u=User.objects.create(
+                first_name=first_name,
+                last_name = last_name,
+                email = email,
+                username = user_name
+            )
+            u.set_password(password)
+            u.save()
+            return redirect('login')
     return render(request,'register.html')
 

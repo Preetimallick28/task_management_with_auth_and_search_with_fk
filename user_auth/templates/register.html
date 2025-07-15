@@ -2,6 +2,9 @@
 {% block content %}
 <div class="register-container">
     <h2>Register</h2>
+    {% if username_existed %}
+        <h2 style="color: red;">username already taken!please choose another one</h2>
+    {% endif %}
     <form action="" method="POST" class="register-form">
         {% csrf_token %}
         <label>First Name:</label>
