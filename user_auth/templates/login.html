@@ -1,7 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
 <center>
+    
     <h2>this is login page</h2>
+    {% if wrong_credential %}
+        <h2 style="color: red;">you have entered wrong credential</h2>
+    {% endif %}
     <form action="" method="POST">
         {% csrf_token %}
         <label for="">Username</label>
@@ -10,5 +14,12 @@
         <input name="password" type="password"><br>
         <input type="submit" value="login">
     </form>
+    <h2>{{request.user}}</h2>
+    <h2>{{request.user.is_authenticated}}</h2>
+<h2>{{request.user.first_name}}</h2>
+<h2>{{request.user.last_name}}</h2>
+<h2>{{request.user.email}}</h2>
+<h2>{{request.user.username}}</h2>
+<h2>{{request.user.password}}</h2>
 </center>
 {% endblock content %}
