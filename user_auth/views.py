@@ -46,3 +46,39 @@ def logout_(request):
     logout(request) #it will clear the credential from sessison storage
     return redirect('login')
 
+def profile(request):
+    return render(request,'profile.html')
+
+def update_profile(request):
+    user_record = User.objects.get(username=request.user)
+    if request.method == 'POST':
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        email = request.POST['email']
+        user_name = request.POST['username']
+
+        user_record.first_name = first_name
+        user_record.last_name = last_name
+        user_record.email = email
+        user_record.username =user_name
+
+        user_record.save()
+        return redirect('profile')
+    return render(request,'update_profile.html',{'user_record':user_record})
+
+def change_pass(request):
+    if request.method == 'POST':
+        u = User.objects.get(username=request.user)
+        old_password=request.POST.get('old_pass')
+        u = authenticate(username=request.user , password = old_password)
+        if u is not None:
+            return render(request,'change_pass.html',{'new_pass':True})
+        else:
+            return render(request,'change_pass.html',{'wrong_old_pass':True})
+    if request.method=='POST':
+        new_password = request.POST['new_pass']
+        user_record = User.objects.get(username=request.user)
+        user_record.set_password(new_password)
+        user_record.save()
+        return redirect('login')        
+    return render(request,'change_pass.html')
