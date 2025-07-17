@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="register-container">
+    <form action="" method="POST" class="register-form">
+        {% csrf_token %}
+        <label>First Name:</label>
+        <input type="text" name="firstname" value="{{user_record.first_name}}">
+
+        <label>Last Name:</label>
+        <input type="text" name="lastname" value="{{user_record.last_name}}">
+
+        <label>Email:</label>
+        <input type="email" name="email" value="{{user_record.email}}">
+
+        <label>Username:</label>
+        <input type="text" name="username" value="{{user_record.username}}">
+
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock content %}
