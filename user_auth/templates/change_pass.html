@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block content %}
+    <center>
+        <h2>update password</h2>
+        {% if wrong_old_pass %}
+           <h2>Entered old password! try again</h2>
+        {% endif %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% if new_pass %}
+                <label for="">New password</label>
+                <input type="password" name="new_pass">
+            {% else %}
+                <label for="">old password</label>
+                <input type="password" name="old_pass"><br>
+            {% endif %}
+            <input type="submit" value="update password">
+        </form>
+    </center>
+{% endblock content %}
