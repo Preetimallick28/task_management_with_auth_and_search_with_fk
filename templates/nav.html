@@ -5,10 +5,10 @@
     <div class="links">
         {% if request.user.is_authenticated %}
             <a href="{% url 'home' %}">HOME</a>
-            <a href="">ADD</a>
+            <a href="{% url 'add' %}">ADD</a>
             <a href="">HISTORY</a>
             <a href="">COMPLETED</a>
-            <a href="{% url 'profile' %}">PROFILE</a>        
+            <a href="{% url 'profile' %}">PROFILE({{user}})</a>        
             <a href="{% url 'logout' %}">LOGOUT</a>
             <a href="{% url 'about' %}">ABOUT</a>
         {% else %}
