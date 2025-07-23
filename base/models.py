@@ -6,3 +6,7 @@ class add(models.Model):
     desc = models.CharField(max_length=200)
     host = models.ForeignKey(User,on_delete=models.CASCADE)
 
+class HistoryModel(models.Model):
+    title = models.CharField(max_length=100)
+    desc = models.CharField(max_length=200)
+    host = models.ForeignKey(User,on_delete=models.CASCADE)

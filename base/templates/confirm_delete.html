@@ -1,0 +1,14 @@
+<!-- steps for confirm delete -->
+
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h2>Are you sure you want to delete data?
+        <h2>title - {{task.title}}</h2>
+    </h2>
+
+    <a href="{% url 'home' %}">Cancel</a>
+    <a href="{% url 'delete_' task.id %}">Confirm</a>
+</center>
+
+{% endblock content %}

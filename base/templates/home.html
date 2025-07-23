@@ -4,6 +4,6 @@
 {% for i in data %}
     <h2>{{i.title}}//{{i.desc}}//({{user}})</h2>
     <a href="{% url 'update_task' i.id %}">update</a>
-    <a href="{% url 'delete_task' i.id %}">delete</a>
+    <a href="{% url 'confirm_delete' i.id %}">delete</a>
 {% endfor %}
 {% endblock content %}
