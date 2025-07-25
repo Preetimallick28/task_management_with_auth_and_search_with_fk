@@ -1,16 +1,23 @@
 {% extends 'main.html' %}
 {% block content %}
 <center>
-    <h2>this is history page</h2>
-    <a href="{% url 'restore_all' %}">Restore All</a>
-    <a href="{% url 'clear_all' %}">Clear All</a>
-    <div>
-        {% for data in all_history %}
-        <h2>{{data.id}}//{{data.title}}//{{data.desc}}
-        <a href="{% url 'restore_history' data.id %}">Restore</a>
-        <a href="{% url 'delete_history' data.id %}">Delete</a>
-        </h2>
-        {% endfor %}
+    <h2 class="page-title">this is history page</h2>
+    <div class="task-container">
+        <div class="actions">
+            <a href="{% url 'restore_all' %}">Restore All</a>
+            <a href="{% url 'clear_all' %}">Clear All</a>
+        </div>
+        <div class="task-card">
+            {% for data in all_history %}
+            <h2>{{data.id}}//{{data.title}}//{{data.desc}}
+                <br><br>
+            <div class="actions">
+                <a href="{% url 'restore_history' data.id %}">Restore</a>
+                <a href="{% url 'delete_history' data.id %}">Delete</a>
+            </div>
+            </h2>
+            {% endfor %}
+        </div>
     </div>
 </center>
 {% endblock content %}

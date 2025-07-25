@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from base.models import add , HistoryModel
+from base.models import add , HistoryModel , CompleteModel
 from django.db.models import Q
 
 #yellow_underline - currently vscode , this project is using system python software, from system python software we are using for download venv module
@@ -91,3 +91,13 @@ def restore_all(request):
         add.objects.create(title=i.title,desc=i.desc,host=request.user)
     restore_his_all.delete()
     return redirect('home')
+
+def complete_task(request,pk):
+   data = add.objects.get(id=pk)
+   CompleteModel.objects.create(title=data.title , desc = data.desc , host = request.user)
+   data.delete()
+   return redirect('completetask_list')
+
+def completetask_list(request):
+    complete_task = CompleteModel.objects.all()
+    return render(request,'completetask_list.html',{'task':complete_task}) 
