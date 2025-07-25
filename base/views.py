@@ -16,8 +16,12 @@ def home(request):
             q_data = request.GET['q']
             print(q_data)
             data = add.objects.filter(Q(title__icontains=q_data) & Q(host=request.user) |Q(desc__icontains=q_data) & Q(host=request.user))
+            if len(data)==0:
+                return render(request,'home.html',{'data':data,'nodata':True})
         else:
             data=add.objects.filter(host=request.user)
+        if len(data)==0:
+            return render(request,'home.html',{'data':data,'notask':True})
     return render(request,'home.html',{'data':data})
 
 def add_task(request):
