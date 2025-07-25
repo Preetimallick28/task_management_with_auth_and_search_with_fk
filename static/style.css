@@ -355,3 +355,59 @@ label {
 .logout:hover {
     background-color: #a71d2a;
 }
+
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+}
+
+.login-title {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 500;
+    color: #444;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
