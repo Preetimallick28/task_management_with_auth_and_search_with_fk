@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% block content %}
+<center>
+    <h2 class="page-title">Completed Task Page</h2>
+
+<div class="task-container">
+    {% for i in task %}
+        <h2 class="title">Title: {{ i.title }}</h2>
+        <p class="desc">Description: {{ i.desc }}</p>
+    {% endfor %}
+</div>
+</center>
+{% endblock content %}

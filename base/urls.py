@@ -13,5 +13,7 @@ urlpatterns = [
     path('restore_history/<int:pk>',views.restore_history,name='restore_history'),
     path('clear_all',views.clear_all,name='clear_all'),
     path('restore_all',views.restore_all,name='restore_all'),
+    path('completed/<int:pk>',views.complete_task,name='completed'),
+    path('completetask_list',views.completetask_list,name='completetask_list'),
     
 ]
