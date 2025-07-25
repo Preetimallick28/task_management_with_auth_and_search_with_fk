@@ -55,8 +55,6 @@ def about(request):
 
 def confirm_delete(request,pk):
     student = add.objects.get(id=pk)
-    
-
     return render(request,'confirm_delete.html',{'task':student})
 
 def delete_(request,pk):
@@ -66,4 +64,30 @@ def delete_(request,pk):
     return redirect('home')
 
 def history(request):
-    return render(request,'history.html')
+    all_history = HistoryModel.objects.all()
+    return render(request,'history.html',{'all_history':all_history})
+
+def delete_history(request,pk):
+    data=HistoryModel.objects.filter(id=pk)
+    data.delete()
+    return redirect('history')
+
+
+def restore_history(request,pk):
+    restore_article = HistoryModel.objects.get(id=pk)
+    add.objects.create(title=restore_article.title,desc=restore_article.desc , host=request.user)
+    restore_article.delete()
+    return redirect('home')
+
+def clear_all(request):
+    clear_all = HistoryModel.objects.filter(host=request.user)
+    # we didnt use all() method because we dont want delete other users record , we have to delete record of specific user only
+    clear_all.delete()
+    return redirect('history')
+
+def restore_all(request):
+    restore_his_all = HistoryModel.objects.all()
+    for i in restore_his_all:
+        add.objects.create(title=i.title,desc=i.desc,host=request.user)
+    restore_his_all.delete()
+    return redirect('home')
